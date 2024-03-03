@@ -1,0 +1,23 @@
+#!/bin/bash
+
+go install github.com/go-delve/delve/cmd/dlv@${DELVE_VERSION}
+
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+mkdir -p ~/.ssh
+cp -f .devcontainer/config/known_hosts ~/.ssh
+
+mkdir -p  ~/.local/bin
+cd ~/.local
+rm -f nvim.appimage*
+wget https://github.com/neovim/neovim/releases/download/v0.9.5/nvim.appimage && \
+chmod u+x nvim.appimage && \
+./nvim.appimage --appimage-extract
+sudo ln -sf $(pwd)/squashfs-root/usr/bin/nvim $HOME/.local/bin/nvim
+
+mkdir -p ~/.config
+rm -rf ~/.config/nvim
+cp -r /workspaces/vim-dlv-sample/.devcontainer/config/nvim ~/.config/nvim
+nvim --headless "+Lazy! sync" +qa
+# npm i @vscode/codicons # nvim-dap-ui 用

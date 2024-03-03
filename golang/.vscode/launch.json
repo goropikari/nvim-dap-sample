@@ -1,0 +1,46 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Connect to server (devcontainer)",
+            "type": "go",
+            "request": "attach",
+            "mode": "remote",
+            "remotePath": "${workspaceFolder}",
+            "port": 8081,
+            "host": "127.0.0.1",
+            "substitutePath": [
+                {
+                    "from": "${workspaceFolder}",
+                    "to": "/app/hoge"
+                },
+                {
+                    "from": "/usr/local/go",
+                    "to": "/usr/local/go"
+                }
+            ]
+        },
+        {
+            "name": "Connect to server (local)",
+            "type": "go",
+            "request": "attach",
+            "mode": "remote",
+            "remotePath": "${workspaceFolder}",
+            "port": 8081,
+            "host": "127.0.0.1",
+            "substitutePath": [
+                {
+                    "from": "${workspaceFolder}",
+                    "to": "/app/hoge"
+                },
+                {
+                    "from": "/usr/lib/go",
+                    "to": "/usr/local/go"
+                }
+            ]
+        }
+    ]
+}

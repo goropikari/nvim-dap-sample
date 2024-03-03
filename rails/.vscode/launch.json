@@ -1,0 +1,45 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "rdbg",
+            "name": "Debug current file with rdbg",
+            "request": "launch",
+            "script": "${file}",
+            "args": [],
+            "askParameters": true
+        },
+        {
+            "type": "rdbg",
+            "name": "Attach with rdbg",
+            "request": "attach"
+        },
+        {
+            "name": "Debug Rails",
+            "type": "rdbg",
+            "request": "launch",
+            "cwd": "${workspaceRoot}",
+            "script": "bin/rails server",
+            "args": [],
+            "askParameters": true,
+            "useBundler": true,
+        },
+        {
+            "type": "rdbg",
+            "name": "Remote Attach with rdbg (local)",
+            "request": "attach",
+            "debugPort": "127.0.0.1:12345",
+            "localfsMap": true
+        },
+        {
+            "type": "rdbg",
+            "name": "Remote Attach with rdbg (docker)",
+            "request": "attach",
+            "debugPort": "127.0.0.1:12345",
+            "localfsMap": "/rails:${workspaceFolder}"
+        }
+    ]
+}
