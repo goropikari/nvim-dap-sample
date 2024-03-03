@@ -25,7 +25,7 @@
             "script": "bin/rails server",
             "args": [],
             "askParameters": true,
-            "useBundler": true,
+            "useBundler": true
         },
         {
             "type": "rdbg",
